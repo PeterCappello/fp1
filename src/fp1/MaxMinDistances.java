@@ -23,7 +23,7 @@ public class MaxMinDistances {
         complexList.add( new Complex( 6, 6 ) );
         System.out.println( complexList );
         
-        // Sum the sizes of the magnified and translated complex numbers whose size is < 2.0.
+        // Sum the sizes of the magnified and translated complex numbers whose original size is < 3.0.
         // imperatively
         double sum = 0.0;
         Complex translate = new Complex( 1, 1 );
