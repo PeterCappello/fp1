@@ -9,32 +9,32 @@ import java.util.List;
  */
 public class Complex {
     private final double real;
-        private final double imag;
+    private final double imag;
+
+    Complex( double real, double imag ) {
+        this.real = real;
+        this.imag = imag;
+    }
+
+    Complex add( Complex operand ) {
+        return new Complex( real + operand.real,  imag + operand.imag );
+    }
+
+    Complex multiply( Complex operand ) {
+        return new Complex( real * operand.real - imag * operand.imag, 
+                            imag * operand.real + real * operand.imag );
+    }
+
+    double size() { return Math.sqrt( real * real + imag * imag ); }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append( " (").append( real ).append( ',' ).append( imag ).append( ") ");
+        return new String( stringBuilder );
+    }
         
-        Complex( double real, double imag ) {
-            this.real = real;
-            this.imag = imag;
-        }
-        
-        Complex add( Complex operand ) {
-            return new Complex( real + operand.real,  imag + operand.imag );
-        }
-        
-        Complex multiply( Complex operand ) {
-            return new Complex( real * operand.real - imag * operand.imag, 
-                                imag * operand.real + real * operand.imag );
-        }
-        
-        double size() { return Math.sqrt( real * real + imag * imag ); }
-        
-        @Override
-        public String toString() {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append( " (").append( real ).append( ',' ).append( imag ).append( ") ");
-            return new String( stringBuilder );
-        }
-        
-        public static void main( String[] args ) {
+    public static void main( String[] args ) {
         List<Complex> complexList = new ArrayList<>();
         complexList.add( new Complex( 6, 3 ) );
         complexList.add( new Complex( 2, 2 ) );
