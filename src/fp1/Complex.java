@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Students: Can this class be changed to a class that is mutable but whose 
+ * methods can be chained as in the main method below?
+ * 
  * @author Peter Cappello
  */
 public class Complex {
