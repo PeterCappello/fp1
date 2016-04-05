@@ -51,10 +51,11 @@ public class Complex {
         System.out.println( complexList );
         
         // Sum the sizes of the magnified and translated complex numbers whose original size is < 3.0.
+        final Complex translate = new Complex( 1, 1 );
+        final Complex magnify = new Complex( 2, 2 );
+        
         // imperatively
         double sum = 0.0;
-        Complex translate = new Complex( 1, 1 );
-        Complex magnify = new Complex( 2, 2 );
         for ( Complex num : complexList )
         {
             if ( num.size() < 3.0 ) {
@@ -67,7 +68,7 @@ public class Complex {
         final double declarativeSum = 
               complexList.stream()
                          .filter( num -> num.size() < 3 )
-                         .mapToDouble( num -> num.multiply( new Complex(2, 2) ).add( new Complex(1, 1) ).size() )
+                         .mapToDouble( num -> num.multiply( magnify ).add( translate ).size() )
                          .sum();
         System.out.println( "declarativeSum: " + declarativeSum );                
     }
