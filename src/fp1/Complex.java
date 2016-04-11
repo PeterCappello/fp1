@@ -52,7 +52,7 @@ public class Complex {
         
         // Sum the sizes of the magnified and translated complex numbers whose original size is < 3.0.
         final Complex translate = new Complex( 1, 1 );
-        final Complex magnify = new Complex( 2, 2 );
+        final Complex magnify   = new Complex( 2, 2 );
         
         // imperatively
         double sum = 0.0;
