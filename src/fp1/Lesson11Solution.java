@@ -50,8 +50,10 @@ public class Lesson11Solution
 
     final String firstLetters = list.stream()
             .map( s -> s.charAt( 0 ) )
+            .peek( System.out::println )
             .map( s -> s.toString() )
-            .collect( Collectors.joining( "" ) );
+            .peek( System.out::println )
+            .collect( Collectors.joining( " ::: " ) );
     System.out.println( "firstLetters: " + firstLetters );
   }
 
@@ -65,7 +67,7 @@ public class Lesson11Solution
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
     final List<String> evenLengthWords = list.stream()
-                                       .filter( s -> s.length() % 2 != 1 )
+                                       .filter( s -> s.length() % 2 == 0 )
                                        .collect( Collectors.toList() );
     System.out.println( "evenLengthWords: " + evenLengthWords );
   }
@@ -114,7 +116,9 @@ public class Lesson11Solution
   private void exercise5() {
     List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    new Thread( () -> list.forEach( System.out::println ) ).start();
+//    new Thread( () -> list.forEach( System.out::println ) ).start();
+new Thread( () -> System.out.println( "sum: " + list.stream().mapToInt( i -> i ).sum() ) )
+        .start(); // forEach( System.out::println ) ).start();
   }
 
   /**
