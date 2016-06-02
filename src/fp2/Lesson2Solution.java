@@ -50,13 +50,14 @@ public class Lesson2Solution
    * Create a new list with all the strings from original list converted to
    * lower case and print them out.
    */
-  private void exercise1() {
+  private void exercise1() 
+  {
     List<String> list = Arrays.asList(
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
     List<String> newList = list.stream()
-        .map( String::toLowerCase )
-        .collect( Collectors.toList() );
+                               .map( String::toLowerCase )
+                               .collect( Collectors.toList() );
 
     newList.forEach( System.out::println );
   }
@@ -67,14 +68,15 @@ public class Lesson2Solution
    * Modify exercise 1 so that the new list only contains strings that have an
    * odd length
    */
-  private void exercise2() {
+  private void exercise2() 
+  {
     List<String> list = Arrays.asList(
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
     List<String> newList = list.stream()
-        .filter( w -> w.length() % 2 == 1 )
-        .map( String::toLowerCase )
-        .collect( Collectors.toList() );
+                               .filter( w -> w.length() % 2 == 1 )
+                               .map( String::toLowerCase )
+                               .collect( Collectors.toList() );
 
     newList.forEach(System.out::println);
   }
@@ -85,26 +87,30 @@ public class Lesson2Solution
    * Join the second, third and forth strings of the list into a single string,
    * where each word is separated by a hyphen (-). Print the resulting string.
    */
-  private void exercise3() {
+  private void exercise3() 
+  {
     List<String> list = Arrays.asList(
         "The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
 
     String merged = list.stream()
-        .skip( 1 )
-        .limit( 3 )
-        .collect( Collectors.joining( "-" ) );
-    System.out.println(merged);
+                        .skip( 1 )
+                        .limit( 3 )
+                        .collect( Collectors.joining( "-" ) );
+    
+    System.out.println( merged );
   }
 
   /**
    * Count the number of lines in the file using the BufferedReader provided
    */
-  private void exercise4() throws IOException {
-    try (BufferedReader reader = 
+  private void exercise4() throws IOException 
+  {
+    try ( BufferedReader reader = 
         Files.newBufferedReader( Paths.get( "SonnetI.txt" ) ) ) 
     {
-      long lineCount = reader.lines().count();
-      System.out.println("Number of lines = " + lineCount);
+      long lineCount = reader.lines()
+                             .count();
+      System.out.println( "Number of lines = " + lineCount );
     }
   }
 
@@ -114,9 +120,10 @@ public class Lesson2Solution
    *
    * HINT: A regular expression, WORD_REGEXP, is already defined for your use.
    */
-  private void exercise5() throws IOException {
+  private void exercise5() throws IOException 
+  {
     try ( BufferedReader reader = 
-        Files.newBufferedReader(Paths.get("SonnetI.txt"))) 
+        Files.newBufferedReader( Paths.get( "SonnetI.txt" ) ) ) 
     {
 
       List<String> uniqueWords = reader.lines()
@@ -124,8 +131,7 @@ public class Lesson2Solution
           .distinct()
           .collect( Collectors.toList() );
 
-      uniqueWords.stream()
-          .forEach( System.out::println );
+      uniqueWords.forEach( System.out::println );
     }
   }
 
@@ -134,36 +140,38 @@ public class Lesson2Solution
    * file, converted to lower-case and with duplicates removed, which is sorted
    * by natural order. Print the contents of the list.
    */
-  private void exercise6() throws IOException {
-    try (BufferedReader reader = 
-        Files.newBufferedReader(Paths.get("SonnetI.txt"))) {
-
+  private void exercise6() throws IOException 
+  {
+    try ( BufferedReader reader = 
+        Files.newBufferedReader( Paths.get( "SonnetI.txt" ) ) ) 
+    {
       List<String> words = reader.lines()
           .flatMap( line -> Stream.of( line.split( WORD_REGEXP ) ) )
-          .map(String::toLowerCase)
+          .map( String::toLowerCase )
           .distinct()
           .sorted()
-          .collect(Collectors.toList());
+          .collect( Collectors.toList() );
 
-      words.stream().forEach(System.out::println);
+      words.stream().forEach( System.out::println );
     }
   }
 
   /**
    * Modify exercise6 so that the words are sorted by length
    */
-  private void exercise7() throws IOException {
+  private void exercise7() throws IOException 
+  {
     try (BufferedReader reader = 
-        Files.newBufferedReader(Paths.get("SonnetI.txt"))) {
-
+        Files.newBufferedReader( Paths.get( "SonnetI.txt" ) ) ) 
+    {
       List<String> words = reader.lines()
-          .flatMap(line -> Stream.of(line.split(WORD_REGEXP)))
-          .map(String::toLowerCase)
+          .flatMap( line -> Stream.of( line.split( WORD_REGEXP ) ) )
+          .map( String::toLowerCase )
           .distinct()
-          .sorted((a, b) -> a.length() - b.length())
-          .collect(Collectors.toList());
+          .sorted( (a, b) -> a.length() - b.length() )
+          .collect( Collectors.toList() );
 
-      words.stream().forEach(System.out::println);
+      words.stream().forEach( System.out::println );
     }
   }
 
