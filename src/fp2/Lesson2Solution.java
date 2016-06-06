@@ -78,7 +78,7 @@ public class Lesson2Solution
                                .map( String::toLowerCase )
                                .collect( Collectors.toList() );
 
-    newList.forEach(System.out::println);
+    newList.forEach( System.out::println );
   }
 
   /**
@@ -168,6 +168,7 @@ public class Lesson2Solution
           .flatMap( line -> Stream.of( line.split( WORD_REGEXP ) ) )
           .map( String::toLowerCase )
           .distinct()
+          .sorted()
           .sorted( (a, b) -> a.length() - b.length() )
           .collect( Collectors.toList() );
 
